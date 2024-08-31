@@ -4,8 +4,6 @@ import { getComponent } from "./getComponents";
 import {
   motionComponents,
   looksComponents,
-  controlComponents,
-  eventsComponents,
 } from "./SidebarConstants";
 
 export default function Sidebar() {
@@ -81,74 +79,6 @@ export default function Sidebar() {
           </ul>
         )}
       </Droppable>
-
-      {/* Control */}
-      <div className="font-bold"> {"Control"} </div>
-      <Droppable droppableId="sideArea-control" type="COMPONENTS">
-        {(provided) => (
-          <ul
-            className="sideArea-control my-3"
-            {...provided.droppableProps}
-            ref={provided.innerRef}
-          >
-            {controlComponents.map((x, i) => {
-              return (
-                <Draggable
-                  key={`${x}-sideArea`}
-                  draggableId={`${x}-sideArea`}
-                  index={i}
-                >
-                  {(provided) => (
-                    <li
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      className="my-2"
-                    >
-                      {getComponent(x)}
-                    </li>
-                  )}
-                </Draggable>
-              );
-            })}
-            {provided.placeholder}
-          </ul>
-        )}
-      </Droppable>
-
-      {/* Events */}
-      <div className="font-bold"> {"Events"} </div>
-      <Droppable droppableId="sideArea-motion" type="COMPONENTS">
-        {(provided) => (
-          <ul
-            className="sideArea-motion my-3"
-            {...provided.droppableProps}
-            ref={provided.innerRef}
-          >
-            {eventsComponents.map((x, i) => {
-              return (
-                <Draggable
-                  key={`${x}-sideArea`}
-                  draggableId={`${x}-sideArea`}
-                  index={i}
-                >
-                  {(provided) => (
-                    <li
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      className="my-2"
-                    >
-                      {getComponent(x)}
-                    </li>
-                  )}
-                </Draggable>
-              );
-            })}
-            {provided.placeholder}
-          </ul>
-        )}
-      </Droppable>
-    </div>
-  );
-}
+      </div>
+    );
+  }
